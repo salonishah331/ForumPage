@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!-- {% load static %}
+ -->
+
+
+<head> 
+      <script src = "{% static 'jquery-1.11.3.min.js' %}"></script>
+    <script type="text/javascript">
+      var createRoomURL = "{% url 'createRoom' %}";
+      var homepageRedirectURL = "{% url 'homepageRedirect' %}";
+
+    </script>
+    <script src= "{% static 'main1.js' %}"></script>   
+    <link rel="stylesheet" href="{% static 'style2.css' %}?v=5"/>
+
+<script> window.roomID = "{{roomID}}"
+console.log(window.roomID)
+</script>
+</head>
+
+<br>
+<body>
+  <div class="dropdown">
+  <button class="dropbtn">Rooms</button>
+  <div class="dropdown-content" id="dropdownmenu">
+    {% for room in ids %}
+      <a href="{% url 'homepage' room %}">Room {{room}}</a>
+    {% endfor %}  
+      <a id="newroombutton"> New Room</a>
+
+
+  </div>
+</div>
+<!-- <br> -->
+<div text-align="center">
+<h1 align="center"></h1>
+<h1 align="center">Forum Webpage</h1>
+<!-- <form id="form" align="center" action="{% url 'indb' %}" method="POST">
+ -->    {% csrf_token %}
+    <p align="center">Post Content:</p> 
+<!--     <p align="center"> Type Text Below</p>
+ -->    <input style="text-align:center" type ="text" id= "PostContent" > </br>
+    <button align="center" id="Post" type="submit">Post</button>
+<!-- </form>
+ --></div>
+
+
+<div id="posthere">
+<h1 align="center">Posts:</h1>
+{% for text in posts %}
+    <p class="postlist" align="center">{{text.post}}</p>
+{% endfor %}
+</div>
+
+
+
+
+</body>
+
+
+
+
